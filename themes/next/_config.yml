@@ -360,8 +360,8 @@ han: false
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: blog-twleo
   count: true
 
 # Hypercomments
@@ -811,4 +811,5 @@ images: images
 
 # Theme version
 version: 5.1.4
+
 

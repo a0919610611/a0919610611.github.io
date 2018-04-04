@@ -75,7 +75,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
-disqus_shortname: blog-twleo
 
 social:
     GitHub: https://github.com/a0919610611
