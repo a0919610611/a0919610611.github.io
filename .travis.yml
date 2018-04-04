@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+    - "8"
+before_install:
+    - openssl aes-256-cbc -K $encrypted_f2ce9c414c40_key -iv $encrypted_f2ce9c414c40_iv
+      -in .travis/id_rsa_travis.enc -out ~\/.ssh/id_rsa_travis -d
+    - chmod 600 ~/.ssh/id_rsa_travis
+    - eval $(ssh-agent)
+    - ssh-add ~/.ssh/id_rsa_travis
+    - cp .travis/ssh_config ~/.ssh/config
+    - git config --global user.name "Yu-Fu, Fu"
+    - git config --global user.email "a0919610611@gmail.com"
+    - npm install -g hexo-cli
+
+install:
+    - npm install
+
+script:
+    hexo deploy -g
+
+branches:
+    only:
+        - source
+
+
+

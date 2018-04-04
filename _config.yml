@@ -75,6 +75,11 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: landscape
 
+disqus:
+  enable: true
+  shortname: blog-twleo    #your name
+  count: true
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
