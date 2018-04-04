@@ -8,7 +8,7 @@ subtitle:
 description:
 keywords:
 author: Leo
-language: zh
+language: zh-tw
 timezone: Asia/Taipei
 
 # URL
@@ -73,12 +73,12 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
-disqus:
-  enable: true
-  shortname: blog-twleo    #your name
-  count: true
+disqus_shortname: blog-twleo
+
+social:
+    GitHub: https://github.com/a0919610611
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
