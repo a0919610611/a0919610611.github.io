@@ -98,3 +98,5 @@ sitemap:
 
 exclude:
   - .DS_Store
+
+google_analytics: UA-80833023-1
