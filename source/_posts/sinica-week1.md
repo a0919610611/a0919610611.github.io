@@ -14,6 +14,7 @@ tags:
     -  Flask
     -  Web3.py
 - 讀了一篇Paper 「[Decentralizing Privacy: Using Blockchain to Protect Personal Data](https://ieeexplore.ieee.org/document/7163223/)」，其實我們就是要實現和這篇類似的東西 XD ，尚待努力，之後還要牽扯到密碼學呢。
+
 # 其他
 下兩個禮拜要去旁聽中研院在台大開的課， 課名是「程式語言理論與型態系統」，課程網站在[這邊](http://flolac.iis.sinica.edu.tw/flolac18/index.html)，看起來滿有趣的，會講到 Functional Programming， 是之前一直想接觸但都沒去碰的東西。
 所以下兩個禮拜只要聽課，當個薪水小偷 ~~
