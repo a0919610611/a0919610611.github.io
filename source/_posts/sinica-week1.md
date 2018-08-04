@@ -1,6 +1,7 @@
 ---
 title: 中研院 資訊所 暑期實習 week1
 date: 2018-07-07 01:04:34
+categories: 中研院 
 tags:
     - 暑期實習
     - 中研院

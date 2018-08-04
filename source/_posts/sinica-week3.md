@@ -1,5 +1,6 @@
 ---
 title: 中研院 資訊所 暑期實習 week3 - FLOLAC 結束 !
+categories: 中研院 
 tags:
   - 暑期實習
   - 中研院

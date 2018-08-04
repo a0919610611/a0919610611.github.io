@@ -6,7 +6,8 @@ tags:
   - FLOLAC
   - Functional Programming
   - Lambda Calculus
-  - Logic
+  - Logic 
+categories: 中研院 
 mathjax: true
 date: 2018-07-13 20:40:16
 ---
