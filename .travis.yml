@@ -21,7 +21,8 @@ install:
     - npm install
 
 script:
-    hexo deploy -g
+    - gulp build
+    - hexo deploy -g
 
 branches:
     only:
