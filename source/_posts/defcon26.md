@@ -2,6 +2,7 @@
 title: DEFCON 參加心得
 tags:
   - DEFCON
+  - BFS
   - 資安
 categories: 資安
 date: 2018-08-19 19:27:12
