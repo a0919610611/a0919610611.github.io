@@ -77,7 +77,11 @@ theme: next
 
 
 social:
-    GitHub: https://github.com/a0919610611
+    GitHub: https://github.com/a0919610611 || github
+    LinkedIn: https://linkedin.com/in/fuyufu || linkedin-square
+    Mail: mailto:a0919610611@gmail.com || envelope
+    Donation: https://www.paypal.me/yufufu || paypal
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
