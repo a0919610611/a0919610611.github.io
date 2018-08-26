@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Leo&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://twleo.com/"/>
+  <updated>2018-08-26T10:29:23.144Z</updated>
+  <id>http://twleo.com/</id>
+  
+  <author>
+    <name>Leo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 總結</title>
+    <link href="http://twleo.com/2018/08/26/sinica-final/"/>
+    <id>http://twleo.com/2018/08/26/sinica-final/</id>
+    <published>2018-08-26T10:28:24.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="實習心得總結"><a href="#實習心得總結" class="headerlink" title="實習心得總結"></a>實習心得總結</h1><p>因為後面幾個禮拜都在寫 code，也沒啥心得好寫，剛好中研院要求要寫心得，我就在這篇文一起寫吧，賺!</p><h1 id="Proof-Of-Concept"><a href="#Proof-Of-Concept" class="headerlink" title="Proof Of Concept"></a>Proof Of Concept</h1><p>最後做出了一個 Prototype ， 基本上就是把之前那篇 paper 「<a href="https://ieeexplore.ieee.org/document/7163223/" target="_blank" rel="noopener">Decentralizing Privacy: Using Blockchain to Protect Personal Data</a>」的架構給實作出來。還撰寫了一個簡易的前端可以輕易的操作智能合約。</p><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>使用 React 當做前端的 Framework ， 使用 <a href="https://github.com/ethereum/web3.js/" target="_blank" rel="noopener">web3.js</a> 和 Ethereum 溝通、<a href="https://metamask.io/" target="_blank" rel="noopener">Metamask</a>管理 User 的 Ethereum Account、 <a href="https://github.com/ipfs/js-ipfs-api" target="_blank" rel="noopener">js-ipfs-api</a>和 IPFS 溝通。</p><p>好險在來實習之前我就已經有用 React 寫過複雜網頁 (<a href="https://oj.nctu.me/" target="_blank" rel="noopener">Formosa OJ - 交大的 Online judge</a>)，就把code 直接拿過來改成符合系統的需求，所以 UX 基本沒有什麼問題，時間都花在 UI 還有和 Ethereum、IPFS 溝通上。 </p><h2 id="Ethereum"><a href="#Ethereum" class="headerlink" title="Ethereum"></a>Ethereum</h2><p>基本上就是寫好 Smart Contract deploy 上去就好了，依靠Blockchain 幫我們達到 Decentralized 、 Integrity 、 Non-repudiation。</p><p>但 Ethereum 有個缺點就是每個 block 是有大小上限的而且不大，所以要寫大量資料上去的話，只能分成好幾個 block ，然後一個 block 被挖到又要幾十秒，花費的時間太高，沒辦法忍受。 </p><h2 id="IPFS"><a href="#IPFS" class="headerlink" title="IPFS"></a>IPFS</h2><p>為了解決寫入大量資料的問題、同時保持前面提到的幾個性質(Decentralized 、 Integrity)，所以決定使用分散式的檔案系統來解決，當成 off-chain storage。</p><h3 id="Ethereum-Swarm-vs-IPFS"><a href="#Ethereum-Swarm-vs-IPFS" class="headerlink" title="Ethereum Swarm vs IPFS"></a>Ethereum Swarm vs IPFS</h3><p>其實 Ethereum 自己也有提出一個和 IPFS 的東西，叫做 「 swarm 」(大家都好喜歡用 swarm 阿)。這邊有Ethereum官方寫的比較 <a href="https://github.com/ethereum/go-ethereum/wiki/IPFS-&amp;-SWARM" target="_blank" rel="noopener">IPFS &amp; SWARM</a>。</p><p>因為我只是要 storage ，所以我選擇了 IPFS ，且 IPFS 文件、教學、各種語言的 Binding API 也比較多。</p><h3 id="使用-IPFS"><a href="#使用-IPFS" class="headerlink" title="使用 IPFS"></a>使用 IPFS</h3><p>有了 IPFS 之後，就不用擔心資料量太大的問題，只要把資料寫到 IPFS 上，再把IPFS URL(是文件的 uuid，基於文件內容算出來的，不用擔心URL指到的檔案被竄改)記錄在 smart contract上，也就同等於把資料記在 Blockchain 上了。</p><h3 id="額外的努力"><a href="#額外的努力" class="headerlink" title="額外的努力"></a>額外的努力</h3><p>因為多了 IPFS，所以變成每個節點除了Ethereum node 外，都還需要 IPFS node，增加了建置的成本、時間。 但也因此有了更多的可能性，不然寫大量資料到 Ethereum 上不但要大量時間、還要大量的手續費(gas)，根本無法在 production 環境實用，最後也只能淪為玩具。  </p><h1 id="累積的重要"><a href="#累積的重要" class="headerlink" title="累積的重要"></a>累積的重要</h1><p>整個系統從零到現在，大概花了三個星期吧，但全是因為在實習前，我就完過這些東西了，不然一個沒有基礎的人可能要花好幾倍的時間。</p><p>所以平常一些看起來沒有什麼用的能力，真的是不知道什麼時候會派上用場呀 ! 所以到處嘗試一不同的技術也是很重要的，不知什麼時候點連成了線，一個系統就被你做出來了 XD</p><h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>大學的前幾個暑假幾乎都在忙演算法競賽，社團的暑訓、比賽的準備練習之類的，而今年也決定退役，好好準備開始搞研究，但閒暇之餘還是參加 CTF、解解演算法題目。實作能力已經有了足夠的鍛鍊，但研究能力還是有所欠缺。 以除了大學裡面的畢業專題，決定暑假來中研院實習，看看一個研究機構裡，PI、博後們是如何做研究的，希望可以學習、效法，增進自己的研究能力。</p><p>從讀 paper、討論想法、找出要解決的問題、要如何解決、評估解決方法等，每一項都是非常重要的過程。 這次的研究主題是「區塊鏈於隱私透明化上之應用」，重點是要保障用戶的隱私，但同時要公開透明，說起來沒什麼，但真的要實現就有不少問題需要去解決了。 因為區塊鏈是公開透明且任何人都可以查看的，但同時又要保障用戶隱私、不會洩漏多餘的資料，這時就需要密碼學的幫忙。 好在我在學校修了不少密碼學相關的課(密碼學概論、橢圓曲線密碼學等)，對於如何把相關的加密、雜湊算法結合進我們系統都不會太過困難。</p><p>這次我們的系統是參考一篇 MIT 發的 paper 「Decentralizing Privacy: Using Blockchain to Protect Personal Data」，但系統的設計不只是只有紙上談兵，看看 paper 而已，因為 paper 往往會省略很多細節是我們實作時才會遇到的，例如: 使用者體驗、Workflow等都要考慮。這次實作時也有碰到原先設計的演算法效率太低，但經過小小的修改，結果演算法、資料結構相關的知識，成功的把演算法的時間複雜度壓了一個 log，也是沒有白費打了這麼久的競賽呀 XD，要用時還是派的上用場的。</p><p>最後經過每個禮拜的討論、功能需求、系統架構也逐漸的清晰明瞭，中間也不斷的溝通、改架構，而寫 code 是裡面比較容易的部份。 最後也成功的實作出了一個可以用的系統，且有個簡單的網頁 UI 可以 demo。</p><p>除了實作系統、寫 code 以外，撰寫說明文件也是很重要的，之後系統會交給其他人繼續撰寫、維護，所以需要有良好的文件可以幫助之後要開發這個系統的人員可以快速了解系統的架構、用到的套件等等。 </p><p>這次實習除了在中研院做 project，也有到台大上中研院開的「邏輯、語言與計算」暑期研習營 (FLOLAC)，上了很多現在台灣的大學資工系不會教的東西，也因此發掘了很多以往所沒接觸過的領域。雖然只有短短兩個禮拜共十天，課程也不容易，但卻學到很多東西。也感嘆台灣的資工系現在連「程式語言」這種對計算機科學根基很重要的課程都不開了。</p><p>總體來說，這次的實習非常的充實，扣掉中間去美國參加 DEFCON 一個禮拜，每天都有很多事可以做，為了完成一個特定目標，四處去找 paper 、 tutorial 、別人心得來讀，而加以統整內化，之後用在自己的系統之中，站在巨人的肩膀之上，更前進一步，或許這就是研究的意義吧 ! </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;實習心得總結&quot;&gt;&lt;a href=&quot;#實習心得總結&quot; class=&quot;headerlink&quot; title=&quot;實習心得總結&quot;&gt;&lt;/a&gt;實習心得總結&lt;/h1&gt;&lt;p&gt;因為後面幾個禮拜都在寫 code，也沒啥心得好寫，剛好中研院要求要寫心得，我就在這篇文一起寫吧，賺!&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+      <category term="Blockchain" scheme="http://twleo.com/tags/Blockchain/"/>
+    
+      <category term="Ethereum" scheme="http://twleo.com/tags/Ethereum/"/>
+    
+      <category term="IPFS" scheme="http://twleo.com/tags/IPFS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DEFCON 參加心得</title>
+    <link href="http://twleo.com/2018/08/19/defcon26/"/>
+    <id>http://twleo.com/2018/08/19/defcon26/</id>
+    <published>2018-08-19T11:27:12.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="賽前準備"><a href="#賽前準備" class="headerlink" title="賽前準備"></a>賽前準備</h1><p>實際把 Attack Manager 上線給其他 Team 用，找到不少 Bug 和 UI 可改善的地方，直到開賽前都還在修呢 XD</p><p>準備簽證 ESTA 、役男出境、護照、換洗衣物就出國啦 ~~ </p><p>基本上都是團體行動，也不需要特別準備什麼 XD</p><h1 id="飛機"><a href="#飛機" class="headerlink" title="飛機 ~"></a>飛機 ~</h1><p>這次來回都是搭聯航(United Airlines)，在舊金山轉機再飛到拉斯維加斯。美國實在是太遙遠了，飛機坐了十幾個小時。<br><img src="/images/IMG_0612.jpg" alt="IMG_0612"><br>第一次看日出居然是在飛機上! <img src="/images/IMG_0607.jpg" alt="IMG_0607"><br>到達舊金山 ~ <img src="/images/IMG_0609.jpg" alt="IMG_0609"><br>到達拉斯維加斯 ~ <img src="/images/IMG_0613.jpg" alt="IMG_0613"></p><h1 id="飯店-amp-Buffet"><a href="#飯店-amp-Buffet" class="headerlink" title="飯店 &amp; Buffet"></a>飯店 &amp; Buffet</h1><p>這次是住在 Caesar Palace ，真的是有夠大，裡面有飯店、精品店、餐廳、速食、賭場，真的是應有盡有。</p><p>房間也是蠻大的，但房間的食物＆水通通都要錢阿 !!! Las Vegas 真的是什麼都要錢 !! 比較雷的點就是沒有 牙膏、牙刷，聽說其他比較高級的房間有，這不是必需品嘛 ORZ </p><p>開賽前吃的食物，都是在 Caesar Palace 四處吃吃，牛排、漢堡等，一餐平均都 15鎂 up，在台灣都可以去吃到飽啦 ! 且入境隨俗，每餐吃完都會給服務員小費，和台灣不太一樣，美國幾乎就是真的有一個固定的服務生負責你這一桌，感覺還蠻不錯的 !</p><h2 id="打完比賽吃的-Buffet"><a href="#打完比賽吃的-Buffet" class="headerlink" title="打完比賽吃的 Buffet"></a>打完比賽吃的 Buffet</h2><p><img src="/images/IMG_0633.jpg" alt="IMG_0633"><br><img src="/images/IMG_0634.jpg" alt="IMG_0634"></p><h1 id="DEFCON-開始"><a href="#DEFCON-開始" class="headerlink" title="DEFCON 開始 !"></a>DEFCON 開始 !</h1><p>DEFCON 總共有四天，第一天開始就有 talk ， CTF第二天才開始打。<br>但第一天的重頭戲不是 talk ，是紀念 T-shirt 啊啊啊啊啊 !!! 紀念 T 穿出去，走路都有風呢 ! 所以真的可以說是大排長龍，排滿兩大房間、一條走廊，我以為我們已經來排的夠早了，但排的時候已經只能在走廊了 !!<br>可以排到時，最想要的幾件衣服都賣光了(正面印著大大的 DEFCON)，因此買了其他件，花了35鎂，這可是先要花 280鎂的門票才能進來排隊呢，實在是價值不菲的一件衣服啊 !<br>買光衣服也沒聽 talk，就回房間繼續幫 Attack manger 增加 feature，給大家 test，並早早睡覺，明天早上，正式開打 !!</p><h1 id="CTF-開打"><a href="#CTF-開打" class="headerlink" title="CTF 開打 !"></a>CTF 開打 !</h1><p>身為 Infra 的一員，必須到現場確保網路、Server、Attack Manager 可以正常運作。<br>規則也是當天才知道，真是有夠刺激 XD<br>這次比賽結合了 Attack &amp; Defense 和 King of the hill (KOH)，KOH只有前五名可以拿到分數。</p><h2 id="規則"><a href="#規則" class="headerlink" title="規則"></a>規則</h2><p><a href="https://www.oooverflow.io/obey/" target="_blank" rel="noopener">https://www.oooverflow.io/obey/</a></p><h2 id="King-Of-The-Hill"><a href="#King-Of-The-Hill" class="headerlink" title="King Of The Hill"></a>King Of The Hill</h2><p>三天各有一題 KOH ，第一天的是組語填空「reverse」，Exploit Team 是用 script 輔助，最後也有一小段時間衝到前五名賺點分數，賽後聽說應該繼續 reverse engineering ，裡面有漏洞，難怪題目叫 reverse XD</p><p>第二天是「doublethink」，題目的意思是讓能一段shellcode 能在越多 ISA (Instruction Set Architecture)執行越好，有這麼多種架構。<img src="/images/15346737339262.jpg" alt="-w722"><br>HITCON 在賽中一直以第一名碾壓大家，賽後才知道是有漏洞可以利用 race condition來作弊 XD 我們最後也手動串了5個且拿了一點分數，聽主辦方說是沒作弊最高的(?)</p><p>最後一天的是「propaganda」，要我們做 binary patching，印出特定的字串，用到的 bytes 越少，分數越高。最後一天只有四個小時，也沒有做出來。</p><h2 id="Attack-amp-Defense"><a href="#Attack-amp-Defense" class="headerlink" title="Attack &amp; Defense"></a>Attack &amp; Defense</h2><p>第一天下午才放出了 A&amp;D 的題目，之後就分別被 PPP 和 DEFKOROOT 分別 first blood了，真是恐怖如斯！ </p><p>而今年封包不像以往是每過幾個round就釋放出來，變成大家都靠 replay 賺分的情況。今年則是題目被打的差不多、或到「steady state」才把封包放出來，所以今年更考驗 找洞、撰寫 exploit 的速度和 patch的能力。</p><p>第二天有封包出來之後，Packet Team 也力馬利用自動化工具做出了 replay exploit script ，上傳到 attack manager ，我們才「正式開打」!</p><p>而這一天比較有趣的是有 web題叫做「 bew 」，A&amp;D很少有非 binary題，所以還真是少見，但這題跟 Web Assembly有關XD 因為可能設計有問題，我們有偷到別人leak出來的flag，也寫了script 偷到一堆分數 XD 也是讓我們之後能12名的關鍵</p><p>到了最後的第三天，我們在第13名，HITCON在第3名，而今天是沒有scoreboard的，且只有四個小時，只能撐到最後了 ! </p><p>原本「bew」這題有偷別人的 exploit 再生出自己的 exploit，但手速輸給其他人，這題就被人攻佔、再也打不進去了 QQ</p><p>在前一天大家熬夜在「poool」這題生出了exploit 和 patch 之後，也成了今天的功臣，至少都能打下一半以上的隊伍，之後再搭配 packet 組的 replay exploit 幾乎可以打到 2/3 ，也讓我們可以持續得分，穩住名次。</p><p>中間的小插曲，一題跑太多 exploit script，沒有仔細確認 script 對哪些 team有效，就給他全部灑下去，然後就被因為太多連線數被警告了 XD </p><p>總體來說三個組都各司其職，溝通搭配沒發生什麼太重大的問題，可喜可賀 !</p><p>而主辦方這次因為第一次主辦發生了不少問題。</p><ul><li>git server 上 patch 有問題，之後回歸 HTTP</li><li>admin interface 意外露出來，好險沒外洩題目</li><li>第二天計分版有錯誤，第三天修正了</li><li>第二天延後兩小時開賽 XD</li><li>有一題和密法學有關的題目，因為流量實在太大，被提早關掉了 XD，其實應該是現場飯店網路太雷了 …</li><li>etc…</li></ul><p>但辦 CTF 不是件容易的事，尤其是「Attack &amp; Defense」，跟我們一樣是「初生之犢」，很期待他們之後的表現 !!</p><h1 id="最後成績"><a href="#最後成績" class="headerlink" title="最後成績"></a>最後成績</h1><p><img src="/images/defcon_result.jpg" alt="defcon_result"><br>恭喜 HITCON 拿到季軍第三名 ! 而我們初次參賽也拿到 12名，實在是非常不錯的成績 ! </p><p>DEFKOROOT 從第一天就碾壓，冠軍也不是很意外，傳統強隊 PPP 更是不用多說，中國的 A*0*E也是不容小覷 !</p><p>比較讓人意外的是 Shellphish 居然掉到最後一名，可能是因為他們的主力都變成今年主辦 OOO 的成員了。</p><p>最後閉幕典禮現場擠爆了，只能在房間看轉播 QQ</p><h1 id="感謝隊友、教授、助理、教育部、企業"><a href="#感謝隊友、教授、助理、教育部、企業" class="headerlink" title="感謝隊友、教授、助理、教育部、企業"></a>感謝隊友、教授、助理、教育部、企業</h1><p>助理熬夜(凌晨1點到4點)幫我們排DEFCON的票，比賽期間幫我們買早、中、晚餐還有宵夜。</p><p>教授們幫我們擋住上面的壓力，讓我們可以只要專心在比賽上面。</p><p>教育部(AIS3)和各個企業(趨勢科技、中華電信、中華資安、資褓儲存)出了經費，讓我們有免費機票、食宿，還有零用金可以自行運用。</p><p>感到「資安即國安」不是說說而已，教育部也辦了「AIS3」、「台灣好厲駭」等訓練活動，看出是有在重視這一塊，畢竟是小國，軟實力培養還是CP值比較高的。</p><p>聽聞韓國的 BOB(Best of the Best)計畫經費無上限，近幾年也在各項大賽橫掃，電競方面也是很強，看來韓國政府更是努力增強軟實力，這是台灣可以效法的。</p><p>還有感謝iThome 的採訪，幫我們拍了不少照片 XD<br>分享一下 <a href="https://www.facebook.com/ithomeonline/videos/1673247822801622/" target="_blank" rel="noopener">【大話資安】HITCON CTF戰隊領隊李倫銓：這一年，我們一起打過的CTF</a>，有講到這次的比賽、和CTF的介紹。</p><p>最後當然是要感謝BFS戰隊的隊友們，比賽這三天充分的分工，現場的Infra Team、封包的 Packet Analysis Team ，攻擊的 Exploit Team，缺一不可，讓我們初次挑戰CTF的最高殿堂 - DEFCON CTF，在精挑細選的24隊中還能拿到第12名。</p><h1 id="曬戰利品"><a href="#曬戰利品" class="headerlink" title="曬戰利品 ~~"></a>曬戰利品 ~~</h1><p><img src="/images/IMG_0645.jpg" alt="IMG_0645"> San francisco 15 鎂 、Las Vegas 10鎂、左上 DEFCON記念 T-shirt 35鎂(門票要280鎂呢 XD)<br><img src="/images/IMG_0649.jpg" alt="IMG_0649"><br>鑰匙圈一個 3鎂<br><img src="/images/IMG_0646.jpg" alt="IMG_0646"><br>拯救我脖子的枕頭 19鎂 ，去程沒有枕頭，下飛機脖子真的快斷啦 !!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;賽前準備&quot;&gt;&lt;a href=&quot;#賽前準備&quot; class=&quot;headerlink&quot; title=&quot;賽前準備&quot;&gt;&lt;/a&gt;賽前準備&lt;/h1&gt;&lt;p&gt;實際把 Attack Manager 上線給其他 Team 用，找到不少 Bug 和 UI 可改善的地方，直到開賽前都還在修
+      
+    
+    </summary>
+    
+      <category term="資安" scheme="http://twleo.com/categories/%E8%B3%87%E5%AE%89/"/>
+    
+    
+      <category term="DEFCON" scheme="http://twleo.com/tags/DEFCON/"/>
+    
+      <category term="BFS" scheme="http://twleo.com/tags/BFS/"/>
+    
+      <category term="資安" scheme="http://twleo.com/tags/%E8%B3%87%E5%AE%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 week5</title>
+    <link href="http://twleo.com/2018/08/15/sinica-week5/"/>
+    <id>http://twleo.com/2018/08/15/sinica-week5/</id>
+    <published>2018-08-15T14:56:24.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="爆肝的一個禮拜"><a href="#爆肝的一個禮拜" class="headerlink" title="爆肝的一個禮拜"></a>爆肝的一個禮拜</h1><p>在這個禮拜一和老師 Meeting 後，整個架構又更完整、更清晰、需求與困難點都逐漸浮出。 晚上還有 DEFCON 集訓 ，肝臟快撐不住啦 !! </p><h1 id="更多的實作"><a href="#更多的實作" class="headerlink" title="更多的實作"></a>更多的實作</h1><p>開始把密碼學導入系統，考慮隱私保護，考慮可實作性，考慮 scalability，考慮各種東西，不斷把之前寫的 code 刪掉 -&gt; 想到更好的辦法 -&gt;  寫新的 code。 code base 和 smart contract 也都越來越肥。 </p><p>但有事情做的感覺還不賴，前幾個禮拜主要都是構想，開始實作之後才會發現想法和實現還是會有落差，像是時間複雜度，加密一筆資料很快，那加密幾百萬筆呢? 檔案傳輸的問題、Tamper Proof 的問題、不可竄改的問題、隱私保護的問題，要實作通通都要考慮到。</p><p>雖然只是要完成一個 Proof Of Concept 的系統，但當然也要有足夠好的架構可以說服其他人這個系統是能用在真實的環境的 ! </p><p>道阻且長，需要更多的腦力激盪，更多的溝通、合作，完成這有趣的區塊鏈應用 !</p><h1 id="DEFCON-備戰"><a href="#DEFCON-備戰" class="headerlink" title="DEFCON 備戰"></a>DEFCON 備戰</h1><p>這個禮拜晚上是 DEFCON 的賽期集訓，但因為身處偏僻的南港，要前往台科大參加集訓，實在是浪費金錢與時間，所以只到現場一天，其他時間就 remote 參加，線上討論了。</p><p>人果然是 deadline-driven 的動物，原本暑假開始就要逐步把 Attack Manager 完成的，但還是拖到賽前一個禮拜才開始真正動工。 Commit 數量圖<img src="/images/15343443712931.jpg" alt="-w767"><br>Infra 工作主要有幾個</p><ul><li>網路方面<ul><li>現場網路架設</li><li>IPSEC VPN </li></ul></li><li>Attack Manager<ul><li>Frontend - Vue.js</li><li>Backend - Flask</li><li>Worker - Run Script</li></ul></li><li>ELK 視覺化</li></ul><p>我負責的是 Attack Manager 的 Backend ，用 Flask 實作 RESTful API ，剛好實習時也是用 Flask(但其實我 Node.js 更熟 xD)，就順便練練手。<br>最後寫了 647 行 ， only one file (好孩子不要學 <img src="/images/15343446126070.jpg" alt="-w560"><br>之後也是刪刪改改，和其他 Team 、前端、Worker 溝通，改 Spec 是家常便飯 ，也是順利的做出可以 Run 的 Server 了 ~</p><p>再來就是在比賽時正式上線摟，請期待之後的 DEFCON 心得文。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;爆肝的一個禮拜&quot;&gt;&lt;a href=&quot;#爆肝的一個禮拜&quot; class=&quot;headerlink&quot; title=&quot;爆肝的一個禮拜&quot;&gt;&lt;/a&gt;爆肝的一個禮拜&lt;/h1&gt;&lt;p&gt;在這個禮拜一和老師 Meeting 後，整個架構又更完整、更清晰、需求與困難點都逐漸浮出。 晚上還有
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="DEFCON" scheme="http://twleo.com/tags/DEFCON/"/>
+    
+      <category term="BFS" scheme="http://twleo.com/tags/BFS/"/>
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 week4</title>
+    <link href="http://twleo.com/2018/07/28/sinica-week4/"/>
+    <id>http://twleo.com/2018/07/28/sinica-week4/</id>
+    <published>2018-07-28T12:09:22.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="7月的最後一個禮拜"><a href="#7月的最後一個禮拜" class="headerlink" title="7月的最後一個禮拜"></a>7月的最後一個禮拜</h1><p>這個禮拜開始回到中研院繼續做研究，開始思考要怎麼完善整個系統。<br>主要還是思考架構，沒有什麼大量的 Coding ，之後要開始結合密碼學，同時要兼顧安全和隱私，也不是件容易的事阿 ~</p><h1 id="Pizza"><a href="#Pizza" class="headerlink" title="Pizza"></a>Pizza</h1><p>整個「程式語言與形式方法」實驗室一起吃了 Pizza ，互相認識 ~<br>主要分享彼此在做什麼，總共有四位研究員，兩個做程式語言領域，兩個做形式方法領域。<br>起初也不知道這兩個領域有什麼關聯，為什麼會在同一個實驗室呢，但在上了FLOLAC 之後，也對這些領域有初步的了解，才知道這兩個領域是有所關聯的。難怪 FLOLAC 會這兩個領域輪流上呢 ~</p><h1 id="Self-Reading"><a href="#Self-Reading" class="headerlink" title="Self Reading"></a>Self Reading</h1><p>這週花了一點時間研究怎麼入門形式方法「formal method」，想從 Online Course 找，但卻苦尋無果，轉而往書籍開始找，之後找到一本 「Concise Guide to Formal Methods」，直接在 Amazon 買了電子書，電子書也只便宜了一點阿 QQ<br>花了幾天的時間看到了第四章，才剛複習完簡單的離散數學 (Set, Relation, Funciton)，再來會介紹 Logic。<br>這本書有快20章呢，希望能按部就班、持之以恆的繼續看完。</p><h1 id="HITCON-CMT"><a href="#HITCON-CMT" class="headerlink" title="HITCON CMT"></a>HITCON CMT</h1><p><a href="https://hitcon.org/2018/CMT/" target="_blank" rel="noopener">HITCON CMT 官網</a><br>這禮拜五、六是一年一度的 HITCON 大拜拜 ~~ 礙於禮拜五要上班沒辦法去 QQ ，只去了禮拜六一天。<br>這次主題和區塊鏈有關，用了硬體錢包，感覺非常酷 XD 大部分資安研究人員都在努力找軟體上的漏洞，尤其是這次的最後一個議程「ALL YOUR NODES ARE BELONG TO US - The Story of an EOS Chain Remote Code Execution Bug」直接挖了一堆 EOS 的 0day，重挫他們的股價，真的是跪著聽完整個議程。 卻很少會去找硬體的漏洞，在加密貨幣越來越夯的情況下，硬體錢包也是一個新的市場，但也是報出了不少漏洞，這個領域還有很長一段路要走呢。</p><h1 id="DEFCON-集訓"><a href="#DEFCON-集訓" class="headerlink" title="DEFCON 集訓"></a>DEFCON 集訓</h1><p>下禮拜就要開始為 DEFCON 做準備了呢，我是 Infra team 的一員，為團隊做好基礎建設，讓 Packet Analysis team 和 Exploit team 能有效率的完成他們的工作。<br>看起來下禮拜，肝是爆定了呢 !</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;7月的最後一個禮拜&quot;&gt;&lt;a href=&quot;#7月的最後一個禮拜&quot; class=&quot;headerlink&quot; title=&quot;7月的最後一個禮拜&quot;&gt;&lt;/a&gt;7月的最後一個禮拜&lt;/h1&gt;&lt;p&gt;這個禮拜開始回到中研院繼續做研究，開始思考要怎麼完善整個系統。&lt;br&gt;主要還是思考架
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="DEFCON" scheme="http://twleo.com/tags/DEFCON/"/>
+    
+      <category term="BFS" scheme="http://twleo.com/tags/BFS/"/>
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+      <category term="Formal Method" scheme="http://twleo.com/tags/Formal-Method/"/>
+    
+      <category term="Reading" scheme="http://twleo.com/tags/Reading/"/>
+    
+      <category term="HITCON" scheme="http://twleo.com/tags/HITCON/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 week3 - FLOLAC 結束 !</title>
+    <link href="http://twleo.com/2018/07/21/sinica-week3/"/>
+    <id>http://twleo.com/2018/07/21/sinica-week3/</id>
+    <published>2018-07-21T15:32:16.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="FLOLAC-結束啦"><a href="#FLOLAC-結束啦" class="headerlink" title="FLOLAC 結束啦 ~~"></a>FLOLAC 結束啦 ~~</h1><h2 id="Functional-Programming-Type-Class-amp-Monad"><a href="#Functional-Programming-Type-Class-amp-Monad" class="headerlink" title="Functional Programming - Type Class &amp; Monad"></a>Functional Programming - Type Class &amp; Monad</h2><p>這次上課主要就是講Type Class 和傳說中的 Monad ，但因為只有三小時，只能淺淺的帶過。</p><h3 id="Type-Class"><a href="#Type-Class" class="headerlink" title="Type Class"></a>Type Class</h3><p>很容易跟 OO (object oriented) 裡的 class 做聯想，用起來也有點像 ，但穆老師叫我們忘記 OO 來學習。<br><a href="http://learnyouahaskell.com/types-and-typeclasses" target="_blank" rel="noopener">Type &amp; TypeClass In Haskell 介紹</a></p><h3 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/monad.html" target="_blank" rel="noopener">圖解 Monad by 阮一峰</a><br>用起來跟 js 的 promise 的有點像<br><a href="https://swizec.com/blog/javascript-promises-monads/swizec/7814" target="_blank" rel="noopener">JavaScript promises are just like monads</a></p><h2 id="Logic-Agda"><a href="#Logic-Agda" class="headerlink" title="Logic - Agda"></a>Logic - Agda</h2><p>Agda 火力展示 &amp; 傳教<br>柯向上老師用 <a href="http://aquamacs.org/" target="_blank" rel="noopener">Aquamacs</a> 配合 LaTeX，飛快的打出各種數學符號 ($\forall,\exists, \land,\lor$) ，真的是潮到出水，飛快的打出各種數學證明，展現了 dependent type programming 的威力。<br>附上 gist <a href="https://gist.github.com/josh-hs-ko/3a0ea16a225ca4efbd01428c06b8fdba" target="_blank" rel="noopener">FLOLAC18.agda</a>，趕快來膜拜 &lt;(_ _)&gt; 。</p><h2 id="lambda-Calculus"><a href="#lambda-Calculus" class="headerlink" title="$\lambda$ Calculus"></a>$\lambda$ Calculus</h2><p>已經上到有點恍惚了 QQ<br>Church Encoding 有點抽象，利用 function 來模擬 type ，像 $ True = \lambda xy.x \space False=\lambda xy.y$ 這種東西。</p><h2 id="pi-Calculus-amp-Session-Type-amp-Scribble"><a href="#pi-Calculus-amp-Session-Type-amp-Scribble" class="headerlink" title="$\pi$ Calculus &amp; Session Type &amp; Scribble"></a>$\pi$ Calculus &amp; Session Type &amp; Scribble</h2><p>這次邀請到  Imperial College London  的 Prof. Nobuko Yoshida 和 Dr. Rumyana Neykova  來上這門課。</p><h3 id="pi-Calculus"><a href="#pi-Calculus" class="headerlink" title="$\pi$ Calculus"></a>$\pi$ Calculus</h3><p>這部分由 Prof. Yoshida 教學 ， 除了日式英文有點需要時間才能聽懂，其餘皆無可挑剔。講的深入淺出，是全部裡面我覺得吸收的最好的一門。<br>和 $\lambda$ Calculus 很像 ，也有 Free name / variable ，引入了 channel 的概念，試圖把 Process 間的 Communication 用形式的方式表達出來。</p><h3 id="Session-Type"><a href="#Session-Type" class="headerlink" title="Session Type"></a>Session Type</h3><p>這部份由 Dr. Neykova 來教學，主要的精神是把 Process 之間的 Communication 都加上 Type，這樣就可以確保不會因為 type error 造成通訊失敗 (EX: A 要 int , B 給 string)等情況。</p><h3 id="Scribble"><a href="#Scribble" class="headerlink" title="Scribble"></a>Scribble</h3><p>Dr. Neykova 還介紹了一個寫 Protocol 的工具 <a href="http://www.scribble.org/" target="_blank" rel="noopener">Scribble</a>，而之後的演講也提到利用 Scribble 寫出的 .scr file 配合 compiler 結合 IDE ，達到 code auto completion ，非常厲害 ~~</p><h2 id="期末測驗"><a href="#期末測驗" class="headerlink" title="期末測驗"></a>期末測驗</h2><p>在兩個禮拜緊湊的課程之後，還沒有好好消化吸收，馬上就迎來恐怖的 Exam，也只能硬著頭皮上了 ~~ ( 雖然只是個旁聽生 XD<br>考試的形式是4個科目個有一份考卷，所以要怎麼分配時間就是一個課題。 而時間只有三個小時，我最後只有把 $\pi$ Calculus寫完，其他的都大概完成 $80\%$而已。<br>課程慣例，考完有 Pizza 和 炸雞 ， 賺 !</p><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>總體來說是非常值得參加的課程，雖然沒有拿到學分 (後來才發現交大資工網頁好像有宣傳 XD)，但認識到了一個嶄新的領域。看了幾間大學的Lab 和課程，發現這領域幾乎沒有任何相關的，目前只有看到穆老師在台大資管開的程式語言(老師以前有在交大開，現在沒了 嗚嗚)，看來研究這部分的都集中在中研院了 XD<br>雖然上完覺得自己的數學廢到掉渣 (資工開的數學課根本就是___)，但也知道了新的寫程式方法、新的計算模型，入了邪教(x ，收獲滿滿。</p><h3 id="新的方向"><a href="#新的方向" class="headerlink" title="新的方向"></a>新的方向</h3><p>目前在交大做的畢業專題題目是「Automatic Exploit Generation」，使用到 <a href="http://angr.io/" target="_blank" rel="noopener">angr</a> 做為 Symbolic/Concolic Exection Engine ，而 angr 底層又用到 SMT Solver <a href="https://github.com/Z3Prover/z3" target="_blank" rel="noopener">Z3</a>，雖然今年沒有教到 SMT Solver ( 在奇數年 QQ )，但有種東西都串在一起的感覺，希望之後能往這方面精進，而不只是用用別人寫好的工具罷了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;FLOLAC-結束啦&quot;&gt;&lt;a href=&quot;#FLOLAC-結束啦&quot; class=&quot;headerlink&quot; title=&quot;FLOLAC 結束啦 ~~&quot;&gt;&lt;/a&gt;FLOLAC 結束啦 ~~&lt;/h1&gt;&lt;h2 id=&quot;Functional-Programming-Type
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+      <category term="FLOLAC" scheme="http://twleo.com/tags/FLOLAC/"/>
+    
+      <category term="Functional Programming" scheme="http://twleo.com/tags/Functional-Programming/"/>
+    
+      <category term="Lambda Calculus" scheme="http://twleo.com/tags/Lambda-Calculus/"/>
+    
+      <category term="Logic" scheme="http://twleo.com/tags/Logic/"/>
+    
+      <category term="Pi Calculus" scheme="http://twleo.com/tags/Pi-Calculus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 week2 - FLOLAC week1 !</title>
+    <link href="http://twleo.com/2018/07/13/sinica-week2/"/>
+    <id>http://twleo.com/2018/07/13/sinica-week2/</id>
+    <published>2018-07-13T12:40:16.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="A-Week-Of-BRAINSTORM"><a href="#A-Week-Of-BRAINSTORM" class="headerlink" title="A Week Of BRAINSTORM !"></a>A Week Of BRAINSTORM !</h1><p>這禮拜在王柏堯老師的建議下，跑去台大旁聽中研院在台大開的暑期課程 FLOLAC ，中文名稱是 「邏輯、語言與計算」暑期研習營，總共兩週10 天的課。<br>課程網址: <a href="http://flolac.iis.sinica.edu.tw/flolac18/index.html" target="_blank" rel="noopener">http://flolac.iis.sinica.edu.tw/flolac18/index.html</a></p><h1 id="過完第一個禮拜的感想"><a href="#過完第一個禮拜的感想" class="headerlink" title="過完第一個禮拜的感想"></a>過完第一個禮拜的感想</h1><p>真是燒腦的一個禮拜，畢竟交大沒有「Functional Programming」這堂課，現在連「Programming Language」這堂課也沒了（以前好像有)，只剩下「Formal Language」。 因此對於理論計算機科學 （ Theoretical Computer Science ) 非常的陌生，正規也就自動機畫來畫去，Turing Machine 也就淺嚐輒止，交大(或者是台灣普遍的大學)資工系幾乎全都往 Engineering 偏了，理論的課更多是開在研究所，但大學沒接觸過又怎麼會往這方向研究呢 ? 諷刺的是交大資工的英文還是「Computer Science」。<br>FLOLAC 也是讓我開了眼界，雖然不一定會往這方向走，但知道自己使用的高階程式語言是別人在默默耕耘的結果，不禁肅然起敬阿 !!</p><h1 id="課程介紹"><a href="#課程介紹" class="headerlink" title="課程介紹"></a>課程介紹</h1><blockquote><p>「邏輯、語言與計算」暑期研習營希望培養學員獨立進行基礎計算科學研究之能力。從第二年起，本研習營在兩大主題 — 程式語言與形式驗證之間輪替。今年（偶數年）之主題為程式語言，正式學分班課程名稱為「程式語言理論與型態系統」。</p></blockquote><blockquote><p>本課程將講授程式語言與形式驗證領域之入門理論與知識，包含邏輯、λ calculus、函數編程 (functional programming)、依值型別(dependent type)等等，希望培養學生以形式邏輯進行清晰思考的能力，了解邏輯與程式語言、型別系統的密切關係，以及型別系統在程式語言中扮演的角色，使學生能以歸納、遞迴方式理解並解決程式設計問題，能運用軟體工具輔助邏輯推理並證明程式之正確性，並具備在程式語言相關領域進行研究的能力。<br><img src="/images/15314843874468.jpg" alt="-w977"></p></blockquote><h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>Functional Programming (FP) 改變了我對程式設計的思維。比起 傳統 Imperative Programming , FP的一大概念即是「程式即證明」，而背後又有一大堆理論。而 FP 的計算模型是 <strong>$\lambda$ (lambda) Calculus</strong> ，和 Turing Machine 有一樣的計算能力，但 rule 比較少，也比 Turing Machine 比較早被提出來。 這次上課是使用 Haskell 這個語言來實作程式，寫起來真的和寫程式證明差不多，目前上到的大部分都是利用 induction (數學歸納法)，而之後講到的 fold ， fold fusion theorem 這部份就有點困難了，還需要利用假日好好仔細消化這周的進度。</p><p>這週還上了 logic 和 $\lambda$ Calculus 。 Logic 主要是各種 proposition (命題) 的 derivation ， $\lambda$ Calculus 也差不多，兩門課相輔相乘，提供了 Functional Programming 的理論基礎。</p><p>雖然是來旁聽的沒有學分，但聽說期末考考過能拿到修業證書，還是來努力讀一下，希望這兩個禮拜不只是聽聽而已。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;A-Week-Of-BRAINSTORM&quot;&gt;&lt;a href=&quot;#A-Week-Of-BRAINSTORM&quot; class=&quot;headerlink&quot; title=&quot;A Week Of BRAINSTORM !&quot;&gt;&lt;/a&gt;A Week Of BRAINSTORM !&lt;/
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+      <category term="FLOLAC" scheme="http://twleo.com/tags/FLOLAC/"/>
+    
+      <category term="Functional Programming" scheme="http://twleo.com/tags/Functional-Programming/"/>
+    
+      <category term="Lambda Calculus" scheme="http://twleo.com/tags/Lambda-Calculus/"/>
+    
+      <category term="Logic" scheme="http://twleo.com/tags/Logic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 week1</title>
+    <link href="http://twleo.com/2018/07/06/sinica-week1/"/>
+    <id>http://twleo.com/2018/07/06/sinica-week1/</id>
+    <published>2018-07-06T17:04:34.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="第一個禮拜終於結束了"><a href="#第一個禮拜終於結束了" class="headerlink" title="第一個禮拜終於結束了 ~"></a>第一個禮拜終於結束了 ~</h1><p>這禮拜完成了基本的Prototype ，比老師預定的進度快了不少 XD ，因為再來實習之前，我自己就有在玩區塊鍊和寫網頁，所以少走了很多彎路。如果是從零開始的話，我估計大概要一個月吧。</p><h1 id="做了哪些東西呢"><a href="#做了哪些東西呢" class="headerlink" title="做了哪些東西呢 ~~"></a>做了哪些東西呢 ~~</h1><ul><li>架設區塊鍊的節點 (Ethereum)，用 geth </li><li>寫智能合約 Smart Contract ，用 Solidity 寫</li><li>架 Web Server 提供 API 還有和 Blockchain溝通，使用 Python3<ul><li>Flask</li><li>Web3.py</li></ul></li><li>讀了一篇Paper 「<a href="https://ieeexplore.ieee.org/document/7163223/" target="_blank" rel="noopener">Decentralizing Privacy: Using Blockchain to Protect Personal Data</a>」，其實我們就是要實現和這篇類似的東西 XD ，尚待努力，之後還要牽扯到密碼學呢。</li></ul><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>下兩個禮拜要去旁聽中研院在台大開的課， 課名是「程式語言理論與型態系統」，課程網站在<a href="http://flolac.iis.sinica.edu.tw/flolac18/index.html" target="_blank" rel="noopener">這邊</a>，看起來滿有趣的，會講到 Functional Programming， 是之前一直想接觸但都沒去碰的東西。<br>所以下兩個禮拜只要聽課，當個薪水小偷 ~~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;第一個禮拜終於結束了&quot;&gt;&lt;a href=&quot;#第一個禮拜終於結束了&quot; class=&quot;headerlink&quot; title=&quot;第一個禮拜終於結束了 ~&quot;&gt;&lt;/a&gt;第一個禮拜終於結束了 ~&lt;/h1&gt;&lt;p&gt;這禮拜完成了基本的Prototype ，比老師預定的進度快了不少 X
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中研院 資訊所 暑期實習 day1</title>
+    <link href="http://twleo.com/2018/07/02/sinica-day1/"/>
+    <id>http://twleo.com/2018/07/02/sinica-day1/</id>
+    <published>2018-07-02T03:12:38.000Z</published>
+    <updated>2018-08-26T10:29:23.144Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="分享契機"><a href="#分享契機" class="headerlink" title="分享契機"></a>分享契機</h1><p>由於網路上關於中研院資訊所暑期實習資訊很少，所以我準備把我這暑假兩個月的實習心得分享出來。<br>今天第一天比較特別，之後應該會每個禮拜po一次。</p><h1 id="報到"><a href="#報到" class="headerlink" title="報到"></a>報到</h1><p>第一天 早上 10點報到 ，之後就簽合約、開門禁，再來就進實驗室啦 ~~</p><h1 id="進實驗室摟"><a href="#進實驗室摟" class="headerlink" title="進實驗室摟"></a>進實驗室摟</h1><p>大概前面程序跑完 11點，由於老師太忙早上都在開會，所以讓我們自由活動到下午1點半。</p><h1 id="午餐"><a href="#午餐" class="headerlink" title="午餐"></a>午餐</h1><p>基本上中研院就是<strong>交通比較方便的交大</strong>，附近基本上都沒什麼好吃的，院內好吃的很貴，便宜的不好吃。<br>今天剛好遇到其他組的 mentor，就一起過去吃，吃了60元的炒飯，只能說普普通通。</p><h1 id="找-Mentor-Meeting"><a href="#找-Mentor-Meeting" class="headerlink" title="找 Mentor Meeting"></a>找 Mentor Meeting</h1><p>我這次在中研院的研究主題是「 區塊鏈於隱私透明化上之應用 」，而Mentor是王柏堯研究員。<br>這次就講了大概暑假要做啥，但因該不能在這透漏，上班時間也很彈性，只要進度有出來，不要太誇張，都不會管你，這也是我喜歡的方式。<br>今天比較深刻的是「隱私和安全是兩回事」。安全只要做好 Access Control 就能解決大部分的事，而隱私則是讓別人能存取到，但又不會和人連結起來，也就是linkability，這樣子才能讓這些資料有價值。<br>之後大概是每個禮拜開一次會，總而言之，不是會拿刀逼著你的老師，所以要自己督促自己阿~~</p><h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>第一天認識認識環境，充滿著學術氣息，期許之後能有不錯的進步 ~~ </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;分享契機&quot;&gt;&lt;a href=&quot;#分享契機&quot; class=&quot;headerlink&quot; title=&quot;分享契機&quot;&gt;&lt;/a&gt;分享契機&lt;/h1&gt;&lt;p&gt;由於網路上關於中研院資訊所暑期實習資訊很少，所以我準備把我這暑假兩個月的實習心得分享出來。&lt;br&gt;今天第一天比較特別，之後應
+      
+    
+    </summary>
+    
+      <category term="中研院" scheme="http://twleo.com/categories/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+    
+      <category term="暑期實習" scheme="http://twleo.com/tags/%E6%9A%91%E6%9C%9F%E5%AF%A6%E7%BF%92/"/>
+    
+      <category term="中研院" scheme="http://twleo.com/tags/%E4%B8%AD%E7%A0%94%E9%99%A2/"/>
+    
+  </entry>
+  
+</feed>

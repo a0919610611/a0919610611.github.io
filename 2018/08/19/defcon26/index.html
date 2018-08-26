@@ -1,0 +1,316 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-tw"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="DEFCON,BFS,資安,"><link rel="alternate" href="/atom.xml" title="Leo's Blog" type="application/atom+xml"><meta name="description" content="賽前準備實際把 Attack Manager 上線給其他 Team 用，找到不少 Bug 和 UI 可改善的地方，直到開賽前都還在修呢 XD 準備簽證 ESTA 、役男出境、護照、換洗衣物就出國啦 ~~  基本上都是團體行動，也不需要特別準備什麼 XD 飛機 ~這次來回都是搭聯航(United Airlines)，在舊金山轉機再飛到拉斯維加斯。美國實在是太遙遠了，飛機坐了十幾個小時。第一次看日出居"><meta name="keywords" content="DEFCON,BFS,資安"><meta property="og:type" content="article"><meta property="og:title" content="DEFCON 參加心得"><meta property="og:url" content="http://twleo.com/2018/08/19/defcon26/index.html"><meta property="og:site_name" content="Leo&#39;s Blog"><meta property="og:description" content="賽前準備實際把 Attack Manager 上線給其他 Team 用，找到不少 Bug 和 UI 可改善的地方，直到開賽前都還在修呢 XD 準備簽證 ESTA 、役男出境、護照、換洗衣物就出國啦 ~~  基本上都是團體行動，也不需要特別準備什麼 XD 飛機 ~這次來回都是搭聯航(United Airlines)，在舊金山轉機再飛到拉斯維加斯。美國實在是太遙遠了，飛機坐了十幾個小時。第一次看日出居"><meta property="og:locale" content="zh-tw"><meta property="og:image" content="http://twleo.com/images/IMG_0612.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0607.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0609.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0613.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0633.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0634.jpg"><meta property="og:image" content="http://twleo.com/images/15346737339262.jpg"><meta property="og:image" content="http://twleo.com/images/defcon_result.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0645.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0649.jpg"><meta property="og:image" content="http://twleo.com/images/IMG_0646.jpg"><meta property="og:updated_time" content="2018-08-26T10:29:23.144Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="DEFCON 參加心得"><meta name="twitter:description" content="賽前準備實際把 Attack Manager 上線給其他 Team 用，找到不少 Bug 和 UI 可改善的地方，直到開賽前都還在修呢 XD 準備簽證 ESTA 、役男出境、護照、換洗衣物就出國啦 ~~  基本上都是團體行動，也不需要特別準備什麼 XD 飛機 ~這次來回都是搭聯航(United Airlines)，在舊金山轉機再飛到拉斯維加斯。美國實在是太遙遠了，飛機坐了十幾個小時。第一次看日出居"><meta name="twitter:image" content="http://twleo.com/images/IMG_0612.jpg"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://twleo.com/2018/08/19/defcon26/"><title>DEFCON 參加心得 | Leo's Blog</title><script>!function(e,a,t,n,g,c,o){e.GoogleAnalyticsObject=g,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),o=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",o.parentNode.insertBefore(c,o)}(window,document,"script",0,"ga"),ga("create","UA-80833023-1","auto"),ga("send","pageview")</script></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Leo's Blog</span><span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description"></h1></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br> 關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 歸檔</a></li><li class="menu-item menu-item-daily-note"><a href="/daily-note" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i><br> 日記</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> 檢索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://twleo.com/2018/08/19/defcon26/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Leo"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.gif"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Leo's Blog"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">DEFCON 參加心得</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">發表於</span> <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-08-19T11:27:12+00:00">2018-08-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分類於</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/資安/" itemprop="url" rel="index"><span itemprop="name">資安</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span><a href="/2018/08/19/defcon26/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/19/defcon26/" itemprop="commentCount"></span></a></span></div></header><div class="post-body" itemprop="articleBody"><h1 id="賽前準備"><a href="#賽前準備" class="headerlink" title="賽前準備"></a>賽前準備</h1><p>實際把 Attack Manager 上線給其他 Team 用，找到不少 Bug 和 UI 可改善的地方，直到開賽前都還在修呢 XD</p><p>準備簽證 ESTA 、役男出境、護照、換洗衣物就出國啦 ~~</p><p>基本上都是團體行動，也不需要特別準備什麼 XD</p><h1 id="飛機"><a href="#飛機" class="headerlink" title="飛機 ~"></a>飛機 ~</h1><p>這次來回都是搭聯航(United Airlines)，在舊金山轉機再飛到拉斯維加斯。美國實在是太遙遠了，飛機坐了十幾個小時。<br><img src="/images/IMG_0612.jpg" alt="IMG_0612"><br>第一次看日出居然是在飛機上! <img src="/images/IMG_0607.jpg" alt="IMG_0607"><br>到達舊金山 ~ <img src="/images/IMG_0609.jpg" alt="IMG_0609"><br>到達拉斯維加斯 ~ <img src="/images/IMG_0613.jpg" alt="IMG_0613"></p><h1 id="飯店-amp-Buffet"><a href="#飯店-amp-Buffet" class="headerlink" title="飯店 &amp; Buffet"></a>飯店 &amp; Buffet</h1><p>這次是住在 Caesar Palace ，真的是有夠大，裡面有飯店、精品店、餐廳、速食、賭場，真的是應有盡有。</p><p>房間也是蠻大的，但房間的食物＆水通通都要錢阿 !!! Las Vegas 真的是什麼都要錢 !! 比較雷的點就是沒有 牙膏、牙刷，聽說其他比較高級的房間有，這不是必需品嘛 ORZ</p><p>開賽前吃的食物，都是在 Caesar Palace 四處吃吃，牛排、漢堡等，一餐平均都 15鎂 up，在台灣都可以去吃到飽啦 ! 且入境隨俗，每餐吃完都會給服務員小費，和台灣不太一樣，美國幾乎就是真的有一個固定的服務生負責你這一桌，感覺還蠻不錯的 !</p><h2 id="打完比賽吃的-Buffet"><a href="#打完比賽吃的-Buffet" class="headerlink" title="打完比賽吃的 Buffet"></a>打完比賽吃的 Buffet</h2><p><img src="/images/IMG_0633.jpg" alt="IMG_0633"><br><img src="/images/IMG_0634.jpg" alt="IMG_0634"></p><h1 id="DEFCON-開始"><a href="#DEFCON-開始" class="headerlink" title="DEFCON 開始 !"></a>DEFCON 開始 !</h1><p>DEFCON 總共有四天，第一天開始就有 talk ， CTF第二天才開始打。<br>但第一天的重頭戲不是 talk ，是紀念 T-shirt 啊啊啊啊啊 !!! 紀念 T 穿出去，走路都有風呢 ! 所以真的可以說是大排長龍，排滿兩大房間、一條走廊，我以為我們已經來排的夠早了，但排的時候已經只能在走廊了 !!<br>可以排到時，最想要的幾件衣服都賣光了(正面印著大大的 DEFCON)，因此買了其他件，花了35鎂，這可是先要花 280鎂的門票才能進來排隊呢，實在是價值不菲的一件衣服啊 !<br>買光衣服也沒聽 talk，就回房間繼續幫 Attack manger 增加 feature，給大家 test，並早早睡覺，明天早上，正式開打 !!</p><h1 id="CTF-開打"><a href="#CTF-開打" class="headerlink" title="CTF 開打 !"></a>CTF 開打 !</h1><p>身為 Infra 的一員，必須到現場確保網路、Server、Attack Manager 可以正常運作。<br>規則也是當天才知道，真是有夠刺激 XD<br>這次比賽結合了 Attack &amp; Defense 和 King of the hill (KOH)，KOH只有前五名可以拿到分數。</p><h2 id="規則"><a href="#規則" class="headerlink" title="規則"></a>規則</h2><p><a href="https://www.oooverflow.io/obey/" target="_blank" rel="noopener">https://www.oooverflow.io/obey/</a></p><h2 id="King-Of-The-Hill"><a href="#King-Of-The-Hill" class="headerlink" title="King Of The Hill"></a>King Of The Hill</h2><p>三天各有一題 KOH ，第一天的是組語填空「reverse」，Exploit Team 是用 script 輔助，最後也有一小段時間衝到前五名賺點分數，賽後聽說應該繼續 reverse engineering ，裡面有漏洞，難怪題目叫 reverse XD</p><p>第二天是「doublethink」，題目的意思是讓能一段shellcode 能在越多 ISA (Instruction Set Architecture)執行越好，有這麼多種架構。<img src="/images/15346737339262.jpg" alt="-w722"><br>HITCON 在賽中一直以第一名碾壓大家，賽後才知道是有漏洞可以利用 race condition來作弊 XD 我們最後也手動串了5個且拿了一點分數，聽主辦方說是沒作弊最高的(?)</p><p>最後一天的是「propaganda」，要我們做 binary patching，印出特定的字串，用到的 bytes 越少，分數越高。最後一天只有四個小時，也沒有做出來。</p><h2 id="Attack-amp-Defense"><a href="#Attack-amp-Defense" class="headerlink" title="Attack &amp; Defense"></a>Attack &amp; Defense</h2><p>第一天下午才放出了 A&amp;D 的題目，之後就分別被 PPP 和 DEFKOROOT 分別 first blood了，真是恐怖如斯！</p><p>而今年封包不像以往是每過幾個round就釋放出來，變成大家都靠 replay 賺分的情況。今年則是題目被打的差不多、或到「steady state」才把封包放出來，所以今年更考驗 找洞、撰寫 exploit 的速度和 patch的能力。</p><p>第二天有封包出來之後，Packet Team 也力馬利用自動化工具做出了 replay exploit script ，上傳到 attack manager ，我們才「正式開打」!</p><p>而這一天比較有趣的是有 web題叫做「 bew 」，A&amp;D很少有非 binary題，所以還真是少見，但這題跟 Web Assembly有關XD 因為可能設計有問題，我們有偷到別人leak出來的flag，也寫了script 偷到一堆分數 XD 也是讓我們之後能12名的關鍵</p><p>到了最後的第三天，我們在第13名，HITCON在第3名，而今天是沒有scoreboard的，且只有四個小時，只能撐到最後了 !</p><p>原本「bew」這題有偷別人的 exploit 再生出自己的 exploit，但手速輸給其他人，這題就被人攻佔、再也打不進去了 QQ</p><p>在前一天大家熬夜在「poool」這題生出了exploit 和 patch 之後，也成了今天的功臣，至少都能打下一半以上的隊伍，之後再搭配 packet 組的 replay exploit 幾乎可以打到 2/3 ，也讓我們可以持續得分，穩住名次。</p><p>中間的小插曲，一題跑太多 exploit script，沒有仔細確認 script 對哪些 team有效，就給他全部灑下去，然後就被因為太多連線數被警告了 XD</p><p>總體來說三個組都各司其職，溝通搭配沒發生什麼太重大的問題，可喜可賀 !</p><p>而主辦方這次因為第一次主辦發生了不少問題。</p><ul><li>git server 上 patch 有問題，之後回歸 HTTP</li><li>admin interface 意外露出來，好險沒外洩題目</li><li>第二天計分版有錯誤，第三天修正了</li><li>第二天延後兩小時開賽 XD</li><li>有一題和密法學有關的題目，因為流量實在太大，被提早關掉了 XD，其實應該是現場飯店網路太雷了 …</li><li>etc…</li></ul><p>但辦 CTF 不是件容易的事，尤其是「Attack &amp; Defense」，跟我們一樣是「初生之犢」，很期待他們之後的表現 !!</p><h1 id="最後成績"><a href="#最後成績" class="headerlink" title="最後成績"></a>最後成績</h1><p><img src="/images/defcon_result.jpg" alt="defcon_result"><br>恭喜 HITCON 拿到季軍第三名 ! 而我們初次參賽也拿到 12名，實在是非常不錯的成績 !</p><p>DEFKOROOT 從第一天就碾壓，冠軍也不是很意外，傳統強隊 PPP 更是不用多說，中國的 A*0*E也是不容小覷 !</p><p>比較讓人意外的是 Shellphish 居然掉到最後一名，可能是因為他們的主力都變成今年主辦 OOO 的成員了。</p><p>最後閉幕典禮現場擠爆了，只能在房間看轉播 QQ</p><h1 id="感謝隊友、教授、助理、教育部、企業"><a href="#感謝隊友、教授、助理、教育部、企業" class="headerlink" title="感謝隊友、教授、助理、教育部、企業"></a>感謝隊友、教授、助理、教育部、企業</h1><p>助理熬夜(凌晨1點到4點)幫我們排DEFCON的票，比賽期間幫我們買早、中、晚餐還有宵夜。</p><p>教授們幫我們擋住上面的壓力，讓我們可以只要專心在比賽上面。</p><p>教育部(AIS3)和各個企業(趨勢科技、中華電信、中華資安、資褓儲存)出了經費，讓我們有免費機票、食宿，還有零用金可以自行運用。</p><p>感到「資安即國安」不是說說而已，教育部也辦了「AIS3」、「台灣好厲駭」等訓練活動，看出是有在重視這一塊，畢竟是小國，軟實力培養還是CP值比較高的。</p><p>聽聞韓國的 BOB(Best of the Best)計畫經費無上限，近幾年也在各項大賽橫掃，電競方面也是很強，看來韓國政府更是努力增強軟實力，這是台灣可以效法的。</p><p>還有感謝iThome 的採訪，幫我們拍了不少照片 XD<br>分享一下 <a href="https://www.facebook.com/ithomeonline/videos/1673247822801622/" target="_blank" rel="noopener">【大話資安】HITCON CTF戰隊領隊李倫銓：這一年，我們一起打過的CTF</a>，有講到這次的比賽、和CTF的介紹。</p><p>最後當然是要感謝BFS戰隊的隊友們，比賽這三天充分的分工，現場的Infra Team、封包的 Packet Analysis Team ，攻擊的 Exploit Team，缺一不可，讓我們初次挑戰CTF的最高殿堂 - DEFCON CTF，在精挑細選的24隊中還能拿到第12名。</p><h1 id="曬戰利品"><a href="#曬戰利品" class="headerlink" title="曬戰利品 ~~"></a>曬戰利品 ~~</h1><p><img src="/images/IMG_0645.jpg" alt="IMG_0645"> San francisco 15 鎂 、Las Vegas 10鎂、左上 DEFCON記念 T-shirt 35鎂(門票要280鎂呢 XD)<br><img src="/images/IMG_0649.jpg" alt="IMG_0649"><br>鑰匙圈一個 3鎂<br><img src="/images/IMG_0646.jpg" alt="IMG_0646"><br>拯救我脖子的枕頭 19鎂 ，去程沒有枕頭，下飛機脖子真的快斷啦 !!</p></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/DEFCON/" rel="tag"># DEFCON</a> <a href="/tags/BFS/" rel="tag"># BFS</a> <a href="/tags/資安/" rel="tag"># 資安</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2018/08/15/sinica-week5/" rel="next" title="中研院 資訊所 暑期實習 week5"><i class="fa fa-chevron-left"></i> 中研院 資訊所 暑期實習 week5</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2018/08/26/sinica-final/" rel="prev" title="中研院 資訊所 暑期實習 總結">中研院 資訊所 暑期實習 總結<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="disqus_thread"><noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目錄</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 本站概覽</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><p class="site-author-name" itemprop="name">Leo</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">文章</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分類</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">22</span> <span class="site-state-item-name">標籤</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/a0919610611" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="https://linkedin.com/in/fuyufu" target="_blank" title="LinkedIn"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a></span><span class="links-of-author-item"><a href="mailto:a0919610611@gmail.com" target="_blank" title="Mail"><i class="fa fa-fw fa-envelope"></i> Mail</a></span><span class="links-of-author-item"><a href="https://www.paypal.me/yufufu" target="_blank" title="Donation"><i class="fa fa-fw fa-paypal"></i> Donation</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#賽前準備"><span class="nav-number">1.</span> <span class="nav-text">賽前準備</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#飛機"><span class="nav-number">2.</span> <span class="nav-text">飛機 ~</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#飯店-amp-Buffet"><span class="nav-number">3.</span> <span class="nav-text">飯店 &amp; Buffet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打完比賽吃的-Buffet"><span class="nav-number">3.1.</span> <span class="nav-text">打完比賽吃的 Buffet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DEFCON-開始"><span class="nav-number">4.</span> <span class="nav-text">DEFCON 開始 !</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CTF-開打"><span class="nav-number">5.</span> <span class="nav-text">CTF 開打 !</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#規則"><span class="nav-number">5.1.</span> <span class="nav-text">規則</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#King-Of-The-Hill"><span class="nav-number">5.2.</span> <span class="nav-text">King Of The Hill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attack-amp-Defense"><span class="nav-number">5.3.</span> <span class="nav-text">Attack &amp; Defense</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最後成績"><span class="nav-number">6.</span> <span class="nav-text">最後成績</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感謝隊友、教授、助理、教育部、企業"><span class="nav-number">7.</span> <span class="nav-text">感謝隊友、教授、助理、教育部、企業</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#曬戰利品"><span class="nav-number">8.</span> <span class="nav-text">曬戰利品 ~~</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2018</span><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">Leo</span></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div> <span class="post-meta-divider">|</span><div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script id="dsq-count-scr" src="https://blog-twleo.disqus.com/count.js" async></script><script type="text/javascript">var disqus_config=function(){this.page.url="http://twleo.com/2018/08/19/defcon26/",this.page.identifier="2018/08/19/defcon26/",this.page.title="DEFCON 參加心得"},d=document,s=d.createElement("script");s.src="https://blog-twleo.disqus.com/embed.js",s.setAttribute("data-timestamp",""+ +new Date),(d.head||d.body).appendChild(s)</script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script></body></html>
