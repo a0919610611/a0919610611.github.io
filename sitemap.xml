@@ -2,21 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.twleo.com/2018/07/07/sinica-week1/</loc>
-    
-    <lastmod>2019-10-02T02:19:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.twleo.com/2018/08/26/sinica-final/</loc>
-    
-    <lastmod>2019-10-02T02:19:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.twleo.com/2018/08/19/defcon26/</loc>
+    <loc>https://blog.twleo.com/2018/07/28/sinica-week4/</loc>
     
     <lastmod>2019-10-02T02:19:02.000Z</lastmod>
     
@@ -30,14 +16,14 @@
   </url>
   
   <url>
-    <loc>https://blog.twleo.com/2018/08/15/sinica-week5/</loc>
+    <loc>https://blog.twleo.com/2018/08/26/sinica-final/</loc>
     
     <lastmod>2019-10-02T02:19:02.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.twleo.com/2018/07/21/sinica-week3/</loc>
+    <loc>https://blog.twleo.com/2018/07/07/sinica-week1/</loc>
     
     <lastmod>2019-10-02T02:19:02.000Z</lastmod>
     
@@ -51,7 +37,28 @@
   </url>
   
   <url>
-    <loc>https://blog.twleo.com/2018/07/28/sinica-week4/</loc>
+    <loc>https://blog.twleo.com/2018/08/15/sinica-week5/</loc>
+    
+    <lastmod>2019-10-02T02:19:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.twleo.com/2018/08/19/defcon26/</loc>
+    
+    <lastmod>2019-10-02T02:19:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.twleo.com/2018/07/21/sinica-week3/</loc>
+    
+    <lastmod>2019-10-02T02:19:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.twleo.com/daily-note/index.html</loc>
     
     <lastmod>2019-10-02T02:19:02.000Z</lastmod>
     
@@ -66,13 +73,6 @@
   
   <url>
     <loc>https://blog.twleo.com/categories/index.html</loc>
-    
-    <lastmod>2019-10-02T02:19:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.twleo.com/daily-note/index.html</loc>
     
     <lastmod>2019-10-02T02:19:02.000Z</lastmod>
     
