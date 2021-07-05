@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="暑期實習,中研院,Blockchain,Ethereum,IPFS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Leo's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="實習心得總結因為後面幾個禮拜都在寫 code，也沒啥心得好寫，剛好中研院要求要寫心得，我就在這篇文一起寫吧，賺! Proof Of Concept最後做出了一個 Prototype ， 基本上就是把之前那篇 paper 「Decentralizing Privacy: Using Blockchain to Protect Personal Data」的架構給實作出來。還撰寫了一個簡易的前端可以輕">
+<meta name="keywords" content="暑期實習,中研院,Blockchain,Ethereum,IPFS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中研院 資訊所 暑期實習 總結">
+<meta property="og:url" content="https://blog.yfu.tw/2018/08/26/sinica-final/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="實習心得總結因為後面幾個禮拜都在寫 code，也沒啥心得好寫，剛好中研院要求要寫心得，我就在這篇文一起寫吧，賺! Proof Of Concept最後做出了一個 Prototype ， 基本上就是把之前那篇 paper 「Decentralizing Privacy: Using Blockchain to Protect Personal Data」的架構給實作出來。還撰寫了一個簡易的前端可以輕">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-10-02T02:19:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="中研院 資訊所 暑期實習 總結">
+<meta name="twitter:description" content="實習心得總結因為後面幾個禮拜都在寫 code，也沒啥心得好寫，剛好中研院要求要寫心得，我就在這篇文一起寫吧，賺! Proof Of Concept最後做出了一個 Prototype ， 基本上就是把之前那篇 paper 「Decentralizing Privacy: Using Blockchain to Protect Personal Data」的架構給實作出來。還撰寫了一個簡易的前端可以輕">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.yfu.tw/2018/08/26/sinica-final/"/>
+
+
+
+
+
+  <title>中研院 資訊所 暑期實習 總結 | Leo's Blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-80833023-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80833023-4');
+</script>
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Leo's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://yfu.tw" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-daily-note">
+          <a href="/daily-note" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            日記
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            檢索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.yfu.tw/2018/08/26/sinica-final/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Leo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">中研院 資訊所 暑期實習 總結</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-08-26T06:28:24-04:00">
+                2018-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/中研院/" itemprop="url" rel="index">
+                    <span itemprop="name">中研院</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/26/sinica-final/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/26/sinica-final/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="實習心得總結"><a href="#實習心得總結" class="headerlink" title="實習心得總結"></a>實習心得總結</h1><p>因為後面幾個禮拜都在寫 code，也沒啥心得好寫，剛好中研院要求要寫心得，我就在這篇文一起寫吧，賺!</p>
+<h1 id="Proof-Of-Concept"><a href="#Proof-Of-Concept" class="headerlink" title="Proof Of Concept"></a>Proof Of Concept</h1><p>最後做出了一個 Prototype ， 基本上就是把之前那篇 paper 「<a href="https://ieeexplore.ieee.org/document/7163223/" target="_blank" rel="noopener">Decentralizing Privacy: Using Blockchain to Protect Personal Data</a>」的架構給實作出來。還撰寫了一個簡易的前端可以輕易的操作智能合約。</p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>使用 React 當做前端的 Framework ， 使用 <a href="https://github.com/ethereum/web3.js/" target="_blank" rel="noopener">web3.js</a> 和 Ethereum 溝通、<a href="https://metamask.io/" target="_blank" rel="noopener">Metamask</a>管理 User 的 Ethereum Account、 <a href="https://github.com/ipfs/js-ipfs-api" target="_blank" rel="noopener">js-ipfs-api</a>和 IPFS 溝通。</p>
+<p>好險在來實習之前我就已經有用 React 寫過複雜網頁 (<a href="https://oj.nctu.me/" target="_blank" rel="noopener">Formosa OJ - 交大的 Online judge</a>)，就把code 直接拿過來改成符合系統的需求，所以 UX 基本沒有什麼問題，時間都花在 UI 還有和 Ethereum、IPFS 溝通上。 </p>
+<h2 id="Ethereum"><a href="#Ethereum" class="headerlink" title="Ethereum"></a>Ethereum</h2><p>基本上就是寫好 Smart Contract deploy 上去就好了，依靠Blockchain 幫我們達到 Decentralized 、 Integrity 、 Non-repudiation。</p>
+<p>但 Ethereum 有個缺點就是每個 block 是有大小上限的而且不大，所以要寫大量資料上去的話，只能分成好幾個 block ，然後一個 block 被挖到又要幾十秒，花費的時間太高，沒辦法忍受。 </p>
+<h2 id="IPFS"><a href="#IPFS" class="headerlink" title="IPFS"></a>IPFS</h2><p>為了解決寫入大量資料的問題、同時保持前面提到的幾個性質(Decentralized 、 Integrity)，所以決定使用分散式的檔案系統來解決，當成 off-chain storage。</p>
+<h3 id="Ethereum-Swarm-vs-IPFS"><a href="#Ethereum-Swarm-vs-IPFS" class="headerlink" title="Ethereum Swarm vs IPFS"></a>Ethereum Swarm vs IPFS</h3><p>其實 Ethereum 自己也有提出一個和 IPFS 的東西，叫做 「 swarm 」(大家都好喜歡用 swarm 阿)。這邊有Ethereum官方寫的比較 <a href="https://github.com/ethereum/go-ethereum/wiki/IPFS-&amp;-SWARM" target="_blank" rel="noopener">IPFS &amp; SWARM</a>。</p>
+<p>因為我只是要 storage ，所以我選擇了 IPFS ，且 IPFS 文件、教學、各種語言的 Binding API 也比較多。</p>
+<h3 id="使用-IPFS"><a href="#使用-IPFS" class="headerlink" title="使用 IPFS"></a>使用 IPFS</h3><p>有了 IPFS 之後，就不用擔心資料量太大的問題，只要把資料寫到 IPFS 上，再把IPFS URL(是文件的 uuid，基於文件內容算出來的，不用擔心URL指到的檔案被竄改)記錄在 smart contract上，也就同等於把資料記在 Blockchain 上了。</p>
+<h3 id="額外的努力"><a href="#額外的努力" class="headerlink" title="額外的努力"></a>額外的努力</h3><p>因為多了 IPFS，所以變成每個節點除了Ethereum node 外，都還需要 IPFS node，增加了建置的成本、時間。 但也因此有了更多的可能性，不然寫大量資料到 Ethereum 上不但要大量時間、還要大量的手續費(gas)，根本無法在 production 環境實用，最後也只能淪為玩具。  </p>
+<h1 id="累積的重要"><a href="#累積的重要" class="headerlink" title="累積的重要"></a>累積的重要</h1><p>整個系統從零到現在，大概花了三個星期吧，但全是因為在實習前，我就完過這些東西了，不然一個沒有基礎的人可能要花好幾倍的時間。</p>
+<p>所以平常一些看起來沒有什麼用的能力，真的是不知道什麼時候會派上用場呀 ! 所以到處嘗試一不同的技術也是很重要的，不知什麼時候點連成了線，一個系統就被你做出來了 XD</p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>大學的前幾個暑假幾乎都在忙演算法競賽，社團的暑訓、比賽的準備練習之類的，而今年也決定退役，好好準備開始搞研究，但閒暇之餘還是參加 CTF、解解演算法題目。實作能力已經有了足夠的鍛鍊，但研究能力還是有所欠缺。 以除了大學裡面的畢業專題，決定暑假來中研院實習，看看一個研究機構裡，PI、博後們是如何做研究的，希望可以學習、效法，增進自己的研究能力。</p>
+<p>從讀 paper、討論想法、找出要解決的問題、要如何解決、評估解決方法等，每一項都是非常重要的過程。 這次的研究主題是「區塊鏈於隱私透明化上之應用」，重點是要保障用戶的隱私，但同時要公開透明，說起來沒什麼，但真的要實現就有不少問題需要去解決了。 因為區塊鏈是公開透明且任何人都可以查看的，但同時又要保障用戶隱私、不會洩漏多餘的資料，這時就需要密碼學的幫忙。 好在我在學校修了不少密碼學相關的課(密碼學概論、橢圓曲線密碼學等)，對於如何把相關的加密、雜湊算法結合進我們系統都不會太過困難。</p>
+<p>這次我們的系統是參考一篇 MIT 發的 paper 「Decentralizing Privacy: Using Blockchain to Protect Personal Data」，但系統的設計不只是只有紙上談兵，看看 paper 而已，因為 paper 往往會省略很多細節是我們實作時才會遇到的，例如: 使用者體驗、Workflow等都要考慮。這次實作時也有碰到原先設計的演算法效率太低，但經過小小的修改，結果演算法、資料結構相關的知識，成功的把演算法的時間複雜度壓了一個 log，也是沒有白費打了這麼久的競賽呀 XD，要用時還是派的上用場的。</p>
+<p>最後經過每個禮拜的討論、功能需求、系統架構也逐漸的清晰明瞭，中間也不斷的溝通、改架構，而寫 code 是裡面比較容易的部份。 最後也成功的實作出了一個可以用的系統，且有個簡單的網頁 UI 可以 demo。</p>
+<p>除了實作系統、寫 code 以外，撰寫說明文件也是很重要的，之後系統會交給其他人繼續撰寫、維護，所以需要有良好的文件可以幫助之後要開發這個系統的人員可以快速了解系統的架構、用到的套件等等。 </p>
+<p>這次實習除了在中研院做 project，也有到台大上中研院開的「邏輯、語言與計算」暑期研習營 (FLOLAC)，上了很多現在台灣的大學資工系不會教的東西，也因此發掘了很多以往所沒接觸過的領域。雖然只有短短兩個禮拜共十天，課程也不容易，但卻學到很多東西。也感嘆台灣的資工系現在連「程式語言」這種對計算機科學根基很重要的課程都不開了。</p>
+<p>總體來說，這次的實習非常的充實，扣掉中間去美國參加 DEFCON 一個禮拜，每天都有很多事可以做，為了完成一個特定目標，四處去找 paper 、 tutorial 、別人心得來讀，而加以統整內化，之後用在自己的系統之中，站在巨人的肩膀之上，更前進一步，或許這就是研究的意義吧 ! </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/暑期實習/" rel="tag"># 暑期實習</a>
+          
+            <a href="/tags/中研院/" rel="tag"># 中研院</a>
+          
+            <a href="/tags/Blockchain/" rel="tag"># Blockchain</a>
+          
+            <a href="/tags/Ethereum/" rel="tag"># Ethereum</a>
+          
+            <a href="/tags/IPFS/" rel="tag"># IPFS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/19/defcon26/" rel="next" title="DEFCON 參加心得">
+                <i class="fa fa-chevron-left"></i> DEFCON 參加心得
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Leo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/a0919610611" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://linkedin.com/in/fuyufu" target="_blank" title="LinkedIn">
+                      
+                        <i class="fa fa-fw fa-linkedin-square"></i>LinkedIn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:a0919610611@gmail.com" target="_blank" title="Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.paypal.me/yufufu" target="_blank" title="Donation">
+                      
+                        <i class="fa fa-fw fa-paypal"></i>Donation</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#實習心得總結"><span class="nav-number">1.</span> <span class="nav-text">實習心得總結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Proof-Of-Concept"><span class="nav-number">2.</span> <span class="nav-text">Proof Of Concept</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端"><span class="nav-number">2.1.</span> <span class="nav-text">前端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ethereum"><span class="nav-number">2.2.</span> <span class="nav-text">Ethereum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPFS"><span class="nav-number">2.3.</span> <span class="nav-text">IPFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ethereum-Swarm-vs-IPFS"><span class="nav-number">2.3.1.</span> <span class="nav-text">Ethereum Swarm vs IPFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-IPFS"><span class="nav-number">2.3.2.</span> <span class="nav-text">使用 IPFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#額外的努力"><span class="nav-number">2.3.3.</span> <span class="nav-text">額外的努力</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#累積的重要"><span class="nav-number">3.</span> <span class="nav-text">累積的重要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#心得"><span class="nav-number">4.</span> <span class="nav-text">心得</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://blog-twleo.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://blog.yfu.tw/2018/08/26/sinica-final/';
+          this.page.identifier = '2018/08/26/sinica-final/';
+          this.page.title = '中研院 資訊所 暑期實習 總結';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-twleo.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
